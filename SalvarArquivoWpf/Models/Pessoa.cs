@@ -29,7 +29,7 @@ namespace SalvarArquivoWpf.Models
         }
         public void Cadastrar()
         {
-            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\teste.txt";
+            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
 
             Pessoa p = new Pessoa();
 
@@ -49,6 +49,7 @@ namespace SalvarArquivoWpf.Models
             finally
             {
                 MessageBox.Show("Pessoa cadastrada com sucesso!", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
+                
             }
         }
 

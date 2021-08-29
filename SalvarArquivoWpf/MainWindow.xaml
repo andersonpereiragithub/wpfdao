@@ -29,38 +29,14 @@
                 </Button>
             </WrapPanel>
         </DockPanel>
-        <Grid Margin="40,0,0,300" Grid.Column="1" Grid.ColumnSpan="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Name="txtBoxCadastro" Grid.Row="0" Margin="230,10,10,-25" Visibility="Visible" Grid.RowSpan="2">
-                <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Width" Value="40"/>
-                    </Style>
-                </StackPanel.Resources>
-                <DockPanel Width="381" HorizontalAlignment="Left">
-                    <TextBlock Text="Nome"/>
-                    <TextBox HorizontalAlignment="Left" Text="{Binding Nome}" Width="300" />
-                </DockPanel>
-                <DockPanel Width="340" HorizontalAlignment="Left">
-                    <TextBlock Text="Idade"/>
-                    <TextBox HorizontalAlignment="Left" Text="{Binding Idade, ValidatesOnExceptions=True}" Width="50" />
-                </DockPanel>
-                <StackPanel Name="btnCadastro" Visibility="Visible" Background="White" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <StackPanel.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Width" Value="100"/>
-                            <Setter Property="Height" Value="30"/>
-                        </Style>
-                    </StackPanel.Resources>
-                    <Button Name="btnSalvar" Content="Salvar" Command="{Binding Cadastrar}"/>
-                    <Button Content="Cancelar"/>
-                    <Button Content="Excluir" Foreground="#FFED1717"/>
-                </StackPanel>
-            </StackPanel>
-
-        </Grid>
+        <Canvas Name="cvsCadastro" Margin="220,96,24,160" Background="#FF2F73AF" Visibility="Hidden">
+            <TextBlock Text="Nome" Canvas.Left="57" Canvas.Top="20"/>
+            <TextBox Text="{Binding Nome}" Width="300" Canvas.Left="57" Canvas.Top="41" />
+            <TextBlock Text="Idade" Canvas.Left="57" Canvas.Top="71"/>
+            <TextBox Text="{Binding Idade, ValidatesOnExceptions=True}" Width="50" Canvas.Left="57" Canvas.Top="89" />
+            <Button Name="btnSalvar" Content="Salvar" Command="{Binding Cadastrar}" Canvas.Left="404" Canvas.Top="39" Width="74" Click="btnSalvar_Click"/>
+            <Button Content="Cancelar" Canvas.Left="404" Canvas.Top="64" Width="74" Click="Button_Click_1"/>
+            <Button Content="Excluir" Foreground="#FFED1717" Canvas.Left="404" Canvas.Top="89" Width="74"/>
+        </Canvas>
     </Grid>
 </Window>

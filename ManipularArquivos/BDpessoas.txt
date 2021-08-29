@@ -8,3 +8,6 @@ João;30
 Alexandra;30
 Bernardo da Silva;31
 Roberto Carlos;80
+João Alfredo;0
+João Alfredo;32
+José da Silva;38

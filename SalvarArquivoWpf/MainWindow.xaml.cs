@@ -19,13 +19,22 @@ namespace SalvarArquivoWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            txtBoxCadastro.Visibility = Visibility.Visible;
-            btnCadastro.Visibility = Visibility.Visible;
+            cvsCadastro.Visibility = Visibility.Visible;
         }
 
         private void sair_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            cvsCadastro.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            cvsCadastro.Visibility = Visibility.Hidden;
         }
     }
 }
