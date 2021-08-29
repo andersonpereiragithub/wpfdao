@@ -1,0 +1,10 @@
+Nome;Idade
+Anderson;48
+Xanda;49
+Roberto;52
+Joana;32
+Joana;32
+João;30
+Alexandra;30
+Bernardo da Silva;31
+Roberto Carlos;80
