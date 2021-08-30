@@ -1,6 +1,7 @@
 ﻿using SalvarArquivoWpf.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,36 @@ namespace SalvarArquivoWpf.Models
 {
     class Pessoa
     {
+        ObservableCollection<Pessoa> pessoas = new ObservableCollection<Pessoa>();
+        public ObservableCollection<Pessoa> ObterTodos()
+        {
+            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
+            //var listaDePessoas = new ObservableCollection<Pessoa>();
+
+            try
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        Pessoa p = new Pessoa();
+
+                        var linha = sr.ReadLine();
+                        string[] dado = linha.Split(";");
+                        p.Nome = dado[0];
+                        p.idade = Convert.ToInt32(dado[1]);
+
+                        pessoas.Add(p);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao ler o arquivo!", "Lista", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return pessoas;
+        }
+
         public string Nome { get => nome; set => nome = value; }
 
         public int Idade
@@ -49,7 +80,7 @@ namespace SalvarArquivoWpf.Models
             finally
             {
                 MessageBox.Show("Pessoa cadastrada com sucesso!", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+
             }
         }
 

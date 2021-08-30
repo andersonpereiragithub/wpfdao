@@ -1,4 +1,3 @@
-Nome;Idade
 Anderson;48
 Xanda;49
 Roberto;52
@@ -11,3 +10,4 @@ Roberto Carlos;80
 João Alfredo;0
 João Alfredo;32
 José da Silva;38
+Teste;30

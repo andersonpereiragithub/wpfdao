@@ -1,6 +1,7 @@
 ﻿using SalvarArquivoWpf.Models;
 using SalvarArquivoWpf.ViewModels;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 
@@ -11,6 +12,7 @@ namespace SalvarArquivoWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,14 @@ namespace SalvarArquivoWpf
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             cvsCadastro.Visibility = Visibility.Hidden;
+        }
+
+        private void ListaPessoas_Click(object sender, RoutedEventArgs e)
+        {
+            Pessoa p = new Pessoa();
+            var lista = p.ObterTodos();
+
+            PessoasView.Visibility = Visibility.Visible;
         }
     }
 }

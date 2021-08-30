@@ -35,6 +35,24 @@ namespace SalvarArquivoWpf.ViewModels
         {
             objeto.Cadastrar();
             Notificar(null, "Nome");
+            Notificar(null, "Idade");
+        }
+        public ICommand ObterTodos
+        {
+            get
+            {
+                if (comandoObterTodos == null)
+                    comandoObterTodos = new MeuComando(ComandoObterTodos);
+
+                return comandoObterTodos;
+            }
+        }
+
+        public void ComandoObterTodos()
+        {
+            objeto.ObterTodos();
+            Notificar(null, "Nome");
+            Notificar(null, "Idade");
         }
 
         private void Notificar(object? resultadoExpressao, [CallerMemberName] string nomePropriedade = "")
@@ -44,6 +62,7 @@ namespace SalvarArquivoWpf.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        private ICommand comandoObterTodos = null;
         private ICommand comandoCadastrar = null;
         private Pessoa objeto = null;
     }

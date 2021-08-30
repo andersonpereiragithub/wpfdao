@@ -9,7 +9,7 @@
     <Grid Background="#FF0B1333">
         <DockPanel Background="#FF0B1333" Height="400" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,17,0,17">
             <WrapPanel Background="#FF2F73AF" Height="242" Width="192">
-                <Button Width="180" Margin="5">
+                <Button Name="ListaPessoas" Width="180" Margin="5" Click="ListaPessoas_Click">
                     <Label Width="170">Lista de Pessoas Cadastradas</Label>
                 </Button>
                 <Button Width="180" Margin="5">
@@ -38,5 +38,13 @@
             <Button Content="Cancelar" Canvas.Left="404" Canvas.Top="64" Width="74" Click="Button_Click_1"/>
             <Button Content="Excluir" Foreground="#FFED1717" Canvas.Left="404" Canvas.Top="89" Width="74"/>
         </Canvas>
+        <ListView Name="PessoasView" Visibility="Hidden" ItemsSource="{Binding ObterTodos}" Margin="220,217,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Idade" DisplayMemberBinding="{Binding Idade}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
