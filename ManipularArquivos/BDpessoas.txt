@@ -11,3 +11,5 @@ João Alfredo;0
 João Alfredo;32
 José da Silva;38
 Teste;30
+Roberto de Souza;40
+Douglas;29

@@ -15,11 +15,10 @@ namespace SalvarArquivoWpf.Models
 {
     class Pessoa
     {
-        ObservableCollection<Pessoa> pessoas = new ObservableCollection<Pessoa>();
+        ObservableCollection<Pessoa> listaPessoas = new ObservableCollection<Pessoa>();
         public ObservableCollection<Pessoa> ObterTodos()
         {
             var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
-            //var listaDePessoas = new ObservableCollection<Pessoa>();
 
             try
             {
@@ -34,7 +33,7 @@ namespace SalvarArquivoWpf.Models
                         p.Nome = dado[0];
                         p.idade = Convert.ToInt32(dado[1]);
 
-                        pessoas.Add(p);
+                        listaPessoas.Add(p);
                     }
                 }
             }
@@ -42,9 +41,36 @@ namespace SalvarArquivoWpf.Models
             {
                 MessageBox.Show("Erro ao ler o arquivo!", "Lista", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            return pessoas;
+            return listaPessoas;
         }
+        public ObservableCollection<Pessoa> OrdenarPorNome()
+        {
+            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
 
+            try
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        Pessoa p = new Pessoa();
+
+                        var linha = sr.ReadLine();
+                        string[] dado = linha.Split(";");
+                        p.Nome = dado[0];
+                        p.idade = Convert.ToInt32(dado[1]);
+
+                        listaPessoas.Add(p);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao ler o arquivo!", "Lista", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            //ObservableCollection<Pessoa> pessoasOrdenadas = (ObservableCollection<Pessoa>)listaPessoas.OrderBy(p => p.Nome);
+            return pessoasOrdenadas;
+        }
         public string Nome { get => nome; set => nome = value; }
 
         public int Idade

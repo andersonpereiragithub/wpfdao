@@ -42,7 +42,19 @@ namespace SalvarArquivoWpf
         private void ListaPessoas_Click(object sender, RoutedEventArgs e)
         {
             Pessoa p = new Pessoa();
-            var lista = p.ObterTodos();
+            PessoasView.ItemsSource = p.ObterTodos();
+
+            PessoasView.Visibility = Visibility.Visible;
+        }
+
+        private void OrdenaPorNome_Click(object sender, RoutedEventArgs e)
+        {
+            if(PessoasView.Visibility == Visibility.Visible)
+            {
+                PessoasView.Visibility = Visibility.Hidden;
+            }
+            Pessoa p = new Pessoa();
+            PessoasView.ItemsSource = p.OrdenarPorNome();
 
             PessoasView.Visibility = Visibility.Visible;
         }

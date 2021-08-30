@@ -8,11 +8,11 @@
         Title="Salvar Dados em ARQUIVO" Height="450" Width="800" Background="#FF0E0B0B" Foreground="#FFF1E7E7">
     <Grid Background="#FF0B1333">
         <DockPanel Background="#FF0B1333" Height="400" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,17,0,17">
-            <WrapPanel Background="#FF2F73AF" Height="242" Width="192">
+            <WrapPanel Background="#FF2F73AF" Height="418" Width="192">
                 <Button Name="ListaPessoas" Width="180" Margin="5" Click="ListaPessoas_Click">
                     <Label Width="170">Lista de Pessoas Cadastradas</Label>
                 </Button>
-                <Button Width="180" Margin="5">
+                <Button Name="OrdenaPorNome" Width="180" Margin="5" Click="OrdenaPorNome_Click">
                     <Label Width="170">Ordernar por NOME</Label>
                 </Button>
                 <Button Width="180" Margin="5">
@@ -29,7 +29,7 @@
                 </Button>
             </WrapPanel>
         </DockPanel>
-        <Canvas Name="cvsCadastro" Margin="220,96,24,160" Background="#FF2F73AF" Visibility="Hidden">
+        <Canvas Name="cvsCadastro" Margin="220,17,24,262" Background="#FF2F73AF" Visibility="Hidden">
             <TextBlock Text="Nome" Canvas.Left="57" Canvas.Top="20"/>
             <TextBox Text="{Binding Nome}" Width="300" Canvas.Left="57" Canvas.Top="41" />
             <TextBlock Text="Idade" Canvas.Left="57" Canvas.Top="71"/>
@@ -38,7 +38,7 @@
             <Button Content="Cancelar" Canvas.Left="404" Canvas.Top="64" Width="74" Click="Button_Click_1"/>
             <Button Content="Excluir" Foreground="#FFED1717" Canvas.Left="404" Canvas.Top="89" Width="74"/>
         </Canvas>
-        <ListView Name="PessoasView" Visibility="Hidden" ItemsSource="{Binding ObterTodos}" Margin="220,217,0,0">
+        <ListView Name="PessoasView" Visibility="Hidden" ItemsSource="{Binding Path=ObterTodos}" Margin="220,177,24,17">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
