@@ -32,6 +32,8 @@ namespace SalvarArquivoWpf
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             cvsCadastro.Visibility = Visibility.Hidden;
+
+            ListaPessoas_Click(sender, e);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

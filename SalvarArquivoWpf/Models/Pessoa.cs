@@ -26,14 +26,12 @@ namespace SalvarArquivoWpf.Models
                 {
                     while (!sr.EndOfStream)
                     {
-                        Pessoa p = new Pessoa();
 
-                        var linha = sr.ReadLine();
-                        string[] dado = linha.Split(";");
-                        p.Nome = dado[0];
-                        p.idade = Convert.ToInt32(dado[1]);
+                        string[] linha = sr.ReadLine().Split(";");
+                        string nome = linha[0];
+                        int idade = Convert.ToInt32(linha[1]);
 
-                        listaPessoas.Add(p);
+                        listaPessoas.Add(new Pessoa { Nome = nome, Idade = idade });
                     }
                 }
             }
@@ -53,23 +51,22 @@ namespace SalvarArquivoWpf.Models
                 {
                     while (!sr.EndOfStream)
                     {
-                        Pessoa p = new Pessoa();
+                        string[] linha = sr.ReadLine().Split(";");
+                        string nome = linha[0];
+                        int idade = Convert.ToInt32(linha[1]);
 
-                        var linha = sr.ReadLine();
-                        string[] dado = linha.Split(";");
-                        p.Nome = dado[0];
-                        p.idade = Convert.ToInt32(dado[1]);
-
-                        listaPessoas.Add(p);
+                        listaPessoas.Add(new Pessoa { Nome = nome, Idade = idade });
+                        
                     }
+                    listaPessoas = new ObservableCollection<Pessoa>(listaPessoas.OrderBy(i => i.Nome));
                 }
             }
             catch
             {
                 MessageBox.Show("Erro ao ler o arquivo!", "Lista", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            //ObservableCollection<Pessoa> pessoasOrdenadas = (ObservableCollection<Pessoa>)listaPessoas.OrderBy(p => p.Nome);
-            return pessoasOrdenadas;
+
+            return listaPessoas;
         }
         public string Nome { get => nome; set => nome = value; }
 
@@ -108,6 +105,21 @@ namespace SalvarArquivoWpf.Models
                 MessageBox.Show("Pessoa cadastrada com sucesso!", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return Nome.GetHashCode();
+        }
+        public override bool Equals(object? obj)
+        {
+            if (!(obj is Pessoa))
+            {
+                return false;
+            }
+            Pessoa outro = obj as Pessoa;
+
+            return Nome.Equals(outro.Nome);
         }
 
         private string nome;
