@@ -19,12 +19,12 @@ namespace SalvarArquivoWpf
             this.DataContext = new PessoaViewModel(new Pessoa());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
             cvsCadastro.Visibility = Visibility.Visible;
         }
 
-        private void sair_Click(object sender, RoutedEventArgs e)
+        private void Sair_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -36,7 +36,7 @@ namespace SalvarArquivoWpf
             ListaPessoas_Click(sender, e);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CancelarCadastro_Click(object sender, RoutedEventArgs e)
         {
             cvsCadastro.Visibility = Visibility.Hidden;
         }
