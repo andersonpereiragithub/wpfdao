@@ -12,7 +12,7 @@ namespace SalvarArquivoWpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,7 +20,9 @@ namespace SalvarArquivoWpf
         }
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            txtNome.Clear();
+            txtIdade.Clear();
             cvsCadastro.Visibility = Visibility.Visible;
         }
 
@@ -51,12 +53,23 @@ namespace SalvarArquivoWpf
 
         private void OrdenaPorNome_Click(object sender, RoutedEventArgs e)
         {
-            if(PessoasView.Visibility == Visibility.Visible)
+            if (PessoasView.Visibility == Visibility.Visible)
             {
                 PessoasView.Visibility = Visibility.Hidden;
             }
             Pessoa p = new Pessoa();
             PessoasView.ItemsSource = p.OrdenarPorNome();
+
+            PessoasView.Visibility = Visibility.Visible;
+        }
+        private void OrdenaPorIdade_Click(object sender, RoutedEventArgs e)
+        {
+            if (PessoasView.Visibility == Visibility.Visible)
+            {
+                PessoasView.Visibility = Visibility.Hidden;
+            }
+            Pessoa p = new Pessoa();
+            PessoasView.ItemsSource = p.OrdenarPorIdade();
 
             PessoasView.Visibility = Visibility.Visible;
         }

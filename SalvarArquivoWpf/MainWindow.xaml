@@ -15,7 +15,7 @@
                 <Button Name="btnOrdenaPorNome" Width="180" Margin="5" Click="OrdenaPorNome_Click">
                     <Label Width="170">Ordernar por NOME</Label>
                 </Button>
-                <Button Name="btnOrdenaPorIdade" Width="180" Margin="5" Click="OrdenaPorNome_Click">
+                <Button Name="btnOrdenaPorIdade" Width="180" Margin="5" Click="OrdenaPorIdade_Click">
                     <Label Width="170">Ordenar por IDADE</Label>
                 </Button>
                 <Button Name="btnCadastrar" Width="180" Margin="5" Click="Cadastrar_Click">
@@ -32,15 +32,15 @@
         <!--Tela de Cadastro-->
         <Canvas Name="cvsCadastro" Margin="220,17,24,262" Background="#FF2F73AF" Visibility="Hidden">
             <TextBlock Text="Nome" Canvas.Left="57" Canvas.Top="20"/>
-            <TextBox Text="{Binding Nome}" Width="300" Canvas.Left="57" Canvas.Top="41" />
+            <TextBox Name="txtNome" Text="{Binding Nome}" Width="300" Canvas.Left="57" Canvas.Top="41" />
             <TextBlock Text="Idade" Canvas.Left="57" Canvas.Top="71"/>
-            <TextBox Text="{Binding Idade, ValidatesOnExceptions=True}" Width="50" Canvas.Left="57" Canvas.Top="89" />
+            <TextBox Name="txtIdade" Text="{Binding Idade, ValidatesOnExceptions=True}" Width="50" Canvas.Left="57" Canvas.Top="89" RenderTransformOrigin="0,-2" />
             <Button Name="btnSalvar" Content="Salvar" Command="{Binding Cadastrar}" Canvas.Left="404" Canvas.Top="39" Width="74" Click="btnSalvar_Click"/>
             <Button Content="Cancelar" Canvas.Left="404" Canvas.Top="64" Width="74" Click="CancelarCadastro_Click"/>
             <Button Content="Excluir" Foreground="#FFED1717" Canvas.Left="404" Canvas.Top="89" Width="74"/>
         </Canvas>
         <!--Tela com a lista dos Nome-->
-        <ListView Name="PessoasView" Visibility="Visible" ItemsSource="{Binding Path=ObterTodos}" Margin="220,177,24,17">
+        <ListView Name="PessoasView" Visibility="Hidden" ItemsSource="{Binding Path=ObterTodos}" Margin="220,177,24,17" Background="#FF2F73AF" Foreground="#FFF1F2F5">
             <ListView.View>
                     <GridView>
                         <GridView.Columns>

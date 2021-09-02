@@ -16,6 +16,7 @@ namespace SalvarArquivoWpf.Models
     class Pessoa
     {
         ObservableCollection<Pessoa> listaPessoas = new ObservableCollection<Pessoa>();
+
         public ObservableCollection<Pessoa> ObterTodos()
         {
             var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
@@ -43,29 +44,16 @@ namespace SalvarArquivoWpf.Models
         }
         public ObservableCollection<Pessoa> OrdenarPorNome()
         {
-            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
-
-            try
-            {
-                using (StreamReader sr = File.OpenText(path))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        string[] linha = sr.ReadLine().Split(";");
-                        string nome = linha[0];
-                        int idade = Convert.ToInt32(linha[1]);
-
-                        listaPessoas.Add(new Pessoa { Nome = nome, Idade = idade });
-                        
-                    }
-                    listaPessoas = new ObservableCollection<Pessoa>(listaPessoas.OrderBy(i => i.Nome));
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Erro ao ler o arquivo!", "Lista", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
+            ObservableCollection<Pessoa> lista = ObterTodos();
+            listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Nome));
+             
+            return listaPessoas;
+        }
+        public ObservableCollection<Pessoa> OrdenarPorIdade()
+        {
+            ObservableCollection<Pessoa> lista = ObterTodos();
+            listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Idade));
+             
             return listaPessoas;
         }
         public string Nome { get => nome; set => nome = value; }

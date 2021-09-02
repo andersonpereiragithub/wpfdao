@@ -21,3 +21,7 @@ Beto;55
 Alencar;40
 Bruno;41
 Adriane Pereira Leiroz;54
+Rodolfo;32
+Bedweiser;10
+Cleber;30
+Cláudio Nogueira;37
