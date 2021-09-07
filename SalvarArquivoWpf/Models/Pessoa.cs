@@ -46,14 +46,27 @@ namespace SalvarArquivoWpf.Models
         {
             ObservableCollection<Pessoa> lista = ObterTodos();
             listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Nome));
-             
+
             return listaPessoas;
+        }
+        public void Deletar(Pessoa p)
+        {
+            ObservableCollection<Pessoa> lista = ObterTodos();
+            ObservableCollection<Pessoa> newLista = new ObservableCollection<Pessoa>();
+            foreach (var item in lista)
+            {
+                if (item.Nome != p.Nome)
+                {
+                    newLista.Add(item);
+                }
+            }
+            SalvarNovaLista(newLista);
         }
         public ObservableCollection<Pessoa> OrdenarPorIdade()
         {
             ObservableCollection<Pessoa> lista = ObterTodos();
             listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Idade));
-             
+
             return listaPessoas;
         }
         public string Nome { get => nome; set => nome = value; }
@@ -94,7 +107,40 @@ namespace SalvarArquivoWpf.Models
 
             }
         }
+        public void SalvarNovaLista(ObservableCollection<Pessoa> novaLista)
+        {
+            var path = @"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas.txt";
+            var backup = @$"D:\ADS_CURSO\OTTO\3o Periodo\ManipularArquivos\ManipularArquivos\BDpessoas_Backup_" + DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss") + ".txt";
 
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Move(path, backup);
+                }
+                else
+                {
+                    File.Create(path);
+                }
+
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    foreach (var p in novaLista)
+                    {
+                        sw.WriteLine($"{p.Nome};{p.Idade}");
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Erro");
+            }
+            finally
+            {
+                MessageBox.Show("Pessoa DELETADA com sucesso!", "Deletada", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+            }
+        }
         public override int GetHashCode()
         {
             return Nome.GetHashCode();

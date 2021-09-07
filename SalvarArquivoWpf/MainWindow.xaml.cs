@@ -20,7 +20,7 @@ namespace SalvarArquivoWpf
         }
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             txtNome.Clear();
             txtIdade.Clear();
             cvsCadastro.Visibility = Visibility.Visible;
@@ -33,9 +33,9 @@ namespace SalvarArquivoWpf
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
+            Pessoa p = new Pessoa();
             cvsCadastro.Visibility = Visibility.Hidden;
-
-            ListaPessoas_Click(sender, e);
+            
         }
 
         private void CancelarCadastro_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace SalvarArquivoWpf
 
         private void ListaPessoas_Click(object sender, RoutedEventArgs e)
         {
-            Pessoa p = new Pessoa();
+            Pessoa p = new Pessoa(); 
             PessoasView.ItemsSource = p.ObterTodos();
 
             PessoasView.Visibility = Visibility.Visible;
@@ -72,6 +72,28 @@ namespace SalvarArquivoWpf
             PessoasView.ItemsSource = p.OrdenarPorIdade();
 
             PessoasView.Visibility = Visibility.Visible;
+        }
+
+        private void btnDeletar_Click(object sender, RoutedEventArgs e)
+        {
+            txtNome.Clear();
+            txtIdade.Clear();
+            cvsCadastro.Visibility = Visibility.Visible;
+        }
+
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            Pessoa p = new Pessoa();
+
+            p.Nome = txtNome.Text;
+            p.Idade = Convert.ToInt32(txtIdade.Text);
+
+            p.Deletar(p);
+            
+            txtNome.Clear();
+            txtIdade.Clear();
+            cvsCadastro.Visibility = Visibility.Hidden;
+            
         }
     }
 }

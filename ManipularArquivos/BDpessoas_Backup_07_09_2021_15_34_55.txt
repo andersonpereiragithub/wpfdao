@@ -1,3 +1,4 @@
+Xanda;49
 Joana;32
 Anderson;49
-Adilson;51
+Beto;12
