@@ -32,9 +32,17 @@
         <!--Tela de Cadastro-->
         <Canvas Name="cvsCadastro" Margin="220,17,24,262" Background="#FF2F73AF" Visibility="Visible">
             <TextBlock Text="Nome" Canvas.Left="57" Canvas.Top="20"/>
-            <TextBox Name="txtNome" Text="{Binding Nome}" Width="300" Canvas.Left="57" Canvas.Top="41" />
+            <TextBox Name="txtNome" 
+                     Text="{Binding ElementName=PessoasView, Path=SelectedValue.Nome, UpdateSourceTrigger=PropertyChanged}" 
+                     Width="300" 
+                     Canvas.Left="57" 
+                     Canvas.Top="41" />
             <TextBlock Text="Idade" Canvas.Left="57" Canvas.Top="71"/>
-            <TextBox Name="txtIdade" Text="{Binding Idade, ValidatesOnExceptions=True}" Width="50" Canvas.Left="57" Canvas.Top="89" RenderTransformOrigin="0,-2" />
+            <TextBox Name="txtIdade" 
+                     Text="{Binding ElementName=PessoasView, Path=SelectedValue.Idade, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                     Width="50" 
+                     Canvas.Left="57" 
+                     Canvas.Top="89" />
             <Button Name="btnSalvar" Content="Salvar" Command="{Binding Cadastrar}" Canvas.Left="404" Canvas.Top="39" Width="74" Click="btnSalvar_Click"/>
             <Button Content="Cancelar" Canvas.Left="404" Canvas.Top="64" Width="74" Click="CancelarCadastro_Click"/>
             <Button Name="btnExcluir" Content="Excluir" Foreground="#FFED1717" Canvas.Left="404" Canvas.Top="89" Width="74" Click="btnExcluir_Click"/>

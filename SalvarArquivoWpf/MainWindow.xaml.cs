@@ -15,8 +15,8 @@ namespace SalvarArquivoWpf
 
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = new PessoaViewModel(new Pessoa());
+            InitializeComponent();
         }
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)

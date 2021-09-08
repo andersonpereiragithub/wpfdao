@@ -49,6 +49,13 @@ namespace SalvarArquivoWpf.Models
 
             return listaPessoas;
         }
+        public ObservableCollection<Pessoa> OrdenarPorIdade()
+        {
+            ObservableCollection<Pessoa> lista = ObterTodos();
+            listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Idade));
+
+            return listaPessoas;
+        }
         public void Deletar(Pessoa p)
         {
             ObservableCollection<Pessoa> lista = ObterTodos();
@@ -61,26 +68,6 @@ namespace SalvarArquivoWpf.Models
                 }
             }
             SalvarNovaLista(newLista);
-        }
-        public ObservableCollection<Pessoa> OrdenarPorIdade()
-        {
-            ObservableCollection<Pessoa> lista = ObterTodos();
-            listaPessoas = new ObservableCollection<Pessoa>(lista.OrderBy(i => i.Idade));
-
-            return listaPessoas;
-        }
-        public string Nome { get => nome; set => nome = value; }
-
-        public int Idade
-        {
-            get => idade;
-            set
-            {
-                if (value < 0 || value > 150)
-                    throw new Exception("A idade deve estar entre 0 e 150");
-
-                idade = value;
-            }
         }
         public void Cadastrar()
         {
@@ -155,7 +142,19 @@ namespace SalvarArquivoWpf.Models
 
             return Nome.Equals(outro.Nome);
         }
+        public string Nome { get => nome; set => nome = value; }
+        public int Idade
+        {
+            get => idade;
+            set
+            {
+                if (value < 0 || value > 150)
+                    throw new Exception("A idade deve estar entre 0 e 150");
 
+                idade = value;
+            }
+        }
+        
         private string nome;
         private int idade;
     }
